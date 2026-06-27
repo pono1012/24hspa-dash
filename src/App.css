@@ -16,7 +16,7 @@
 }
 
 header.header-container {
-  margin: 1rem;
+  margin: 0.5rem 1rem;
   z-index: 1000;
   position: relative;
 }
@@ -25,7 +25,7 @@ header.header-container {
   position: relative;
   flex-grow: 1;
   width: 100%;
-  height: calc(100vh - 100px); /* Subtract header height */
+  height: calc(100vh - 60px); /* Subtract header height */
   overflow: hidden; /* The workspace bounds the draggable items */
 }
 
