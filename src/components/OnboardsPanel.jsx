@@ -47,7 +47,7 @@ const OnboardSlot = ({ initialSlot }) => {
 };
 
 const OnboardsPanel = () => {
-  const [slotCount, setSlotCount] = useState(4);
+  const [slotCount, setSlotCount] = useState(5);
   const slots = Array.from({ length: slotCount }, (_, i) => i);
 
   return (
