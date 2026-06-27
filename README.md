@@ -12,6 +12,9 @@ A modular, drag-and-drop live telemetry and streaming dashboard built specifical
 - **Accurate Track Weather**: Uses localized Circuit de Spa-Francorchamps weather data via the `yr.no` API.
 - **Windy Radar**: Live precipitation radar overlay.
 - **Live Onboards & Broadcast**: Integrated streaming views for a complete race center experience.
+- **Layout Profiles**: Export your custom dashboard layout as a JSON file and share it with others. 
+  - 📥 **[Download Example Profile (Pono1012's Layout)](public/dashboard-profile.json)**
+    *(Import this file via the Settings menu in the dashboard!)*
 
 ## Tech Stack
 
