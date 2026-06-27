@@ -1,6 +1,6 @@
 # 24H Spa Live Dashboard
 
-![Dashboard Demo](public/screenshot.png)
+![Dashboard Demo](public/dashboard-preview.png)
 
 A modular, drag-and-drop live telemetry and streaming dashboard built specifically for the CrowdStrike 24 Hours of Spa.
 
