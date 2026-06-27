@@ -10,6 +10,46 @@ const Header = ({ visiblePanels, setVisiblePanels }) => {
   const [countdown, setCountdown] = useState('');
   const [showSettings, setShowSettings] = useState(false);
 
+  const handleExportProfile = () => {
+    const profile = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith('panel-state-') || key === 'dashboard-visible-panels') {
+        profile[key] = localStorage.getItem(key);
+      }
+    }
+    profile['dashboard-visible-panels'] = JSON.stringify(visiblePanels);
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(profile, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", "dashboard-profile.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  };
+
+  const handleImportProfile = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const profile = JSON.parse(e.target.result);
+        Object.keys(profile).forEach(key => {
+          if (key.startsWith('panel-state-') || key === 'dashboard-visible-panels') {
+            localStorage.setItem(key, profile[key]);
+          }
+        });
+        window.location.reload();
+      } catch (err) {
+        alert("Invalid profile file!");
+      }
+    };
+    reader.readAsText(file);
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -130,6 +170,21 @@ const Header = ({ visiblePanels, setVisiblePanels }) => {
                   {panelKey.charAt(0).toUpperCase() + panelKey.slice(1).replace(/([A-Z])/g, ' $1')}
                 </label>
               ))}
+            </div>
+            
+            <div className="profile-actions" style={{ marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <button 
+                onClick={handleExportProfile} 
+                style={{ padding: '0.4rem', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem' }}
+              >
+                Export Layout Profile
+              </button>
+              <label 
+                style={{ padding: '0.4rem', background: 'var(--accent-color)', border: 'none', color: '#fff', borderRadius: '4px', cursor: 'pointer', textAlign: 'center', fontSize: '0.8rem' }}
+              >
+                Import Layout Profile
+                <input type="file" accept=".json" style={{ display: 'none' }} onChange={handleImportProfile} />
+              </label>
             </div>
           </div>
         )}

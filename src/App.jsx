@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import StreamViewer from './components/StreamViewer';
 import LiveTiming from './components/LiveTiming';
@@ -9,14 +9,28 @@ import DraggablePanel from './components/DraggablePanel';
 import './App.css';
 
 function App() {
-  const [visiblePanels, setVisiblePanels] = useState({
-    broadcast: true,
-    timing: true,
-    raceControl: true,
-    weather: true,
-    map: false,
-    onboards: true
+  const [visiblePanels, setVisiblePanels] = useState(() => {
+    const saved = localStorage.getItem('dashboard-visible-panels');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error("Failed to parse saved visible panels", e);
+      }
+    }
+    return {
+      broadcast: true,
+      timing: true,
+      raceControl: true,
+      weather: true,
+      map: false,
+      onboards: true
+    };
   });
+
+  useEffect(() => {
+    localStorage.setItem('dashboard-visible-panels', JSON.stringify(visiblePanels));
+  }, [visiblePanels]);
 
   return (
     <div className="dashboard-app floating-layout">
