@@ -23,6 +23,10 @@ A modular, drag-and-drop live telemetry and streaming dashboard built specifical
 - Lucide React (Icons)
 - Vercel Serverless (for proxy routing in production)
 
+## A Note on Timing71
+
+Many fans prefer [Timing71](https://www.timing71.org/timing/28e5b058-ccff-4e58-adcc-92800908329f) for their live telemetry. Unfortunately, due to strict `X-Frame-Options` and `Content-Security-Policy` headers set by the Timing71 servers, it is technically impossible to safely embed their application inside an `<iframe>` within this dashboard. As an alternative, this dashboard integrates the official Swiss Timing feed (bypassing their client-side restrictions via a custom proxy) and provides a direct pop-out link to Timing71 in the panel header.
+
 ## Local Development
 
 To run the dashboard locally:
