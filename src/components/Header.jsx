@@ -82,18 +82,32 @@ const Header = ({ visiblePanels, setVisiblePanels }) => {
       </div>
 
       <div className="header-right" style={{ position: 'relative' }}>
-        <button className="icon-btn" title="Notifications">
+        <button className="action-btn" title="Notifications">
           <Bell size={20} />
           <span className="badge">3</span>
         </button>
         <button 
-          className="icon-btn" 
+          className="action-btn" 
           title="Settings"
           onClick={() => setShowSettings(!showSettings)}
         >
           <Settings size={20} />
         </button>
-        <button className="icon-btn" title="Fullscreen">
+        <button 
+          className="action-btn" 
+          title="Fullscreen"
+          onClick={() => {
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable fullscreen: ${err.message}`);
+              });
+            } else {
+              if (document.exitFullscreen) {
+                document.exitFullscreen();
+              }
+            }
+          }}
+        >
           <Maximize size={20} />
         </button>
 
