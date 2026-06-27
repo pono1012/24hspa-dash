@@ -48,3 +48,34 @@ header.header-container {
   border: none !important;
   box-shadow: none !important;
 }
+
+.mobile-warning {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobile-warning {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 99999;
+    text-align: center;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  .mobile-warning h2 {
+    color: #ff3344;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+  .mobile-warning p {
+    color: #fff;
+    max-width: 400px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}

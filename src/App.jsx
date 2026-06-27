@@ -34,6 +34,11 @@ function App() {
 
   return (
     <div className="dashboard-app floating-layout">
+      <div className="mobile-warning">
+        <h2>🖥️ Desktop Recommended</h2>
+        <p>This professional telemetry dashboard is designed for large desktop monitors. Please view on a larger screen for the best experience.</p>
+      </div>
+
       <Header visiblePanels={visiblePanels} setVisiblePanels={setVisiblePanels} />
       
       <main className="dashboard-workspace">

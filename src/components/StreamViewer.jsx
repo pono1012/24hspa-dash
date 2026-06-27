@@ -35,7 +35,9 @@ const StreamViewer = () => {
           </div>
         </div>
         <div className="stream-badges">
-          <span className="badge-live">WAITING</span>
+          <span className="badge-live" style={{ color: '#ff3344', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <span style={{ fontSize: '10px' }}>●</span> LIVE
+          </span>
           <span className="badge-lang">{activeStream.lang}</span>
         </div>
       </div>
