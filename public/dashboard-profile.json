@@ -1,10 +1,10 @@
 {
-  "panel-state-broadcast": "{\"position\":{\"x\":980.7381591796875,\"y\":282.6422119140625},\"size\":{\"width\":\"1260px\",\"height\":\"840px\"}}",
-  "panel-state-race-control": "{\"position\":{\"x\":739.5272827148438,\"y\":267.6031494140625},\"size\":{\"width\":\"300px\",\"height\":\"300px\"}}",
-  "panel-state-conditions": "{\"position\":{\"x\":730.1611328125,\"y\":802.67578125},\"size\":{\"width\":\"300px\",\"height\":\"240px\"}}",
-  "panel-state-live-onboards-grid": "{\"position\":{\"x\":18.75,\"y\":-0.00000762939453125},\"size\":{\"width\":\"2540px\",\"height\":\"360px\"}}",
-  "panel-state-circuit-map": "{\"position\":{\"x\":860,\"y\":240.00001525878906}}",
-  "panel-state-live-timing": "{\"size\":{\"width\":\"960px\",\"height\":\"940px\"},\"position\":{\"x\":15,\"y\":271.1788635253906}}",
-  "panel-state-weather-radar": "{\"position\":{\"x\":725.8078002929688,\"y\":491.87896728515625},\"size\":{\"width\":\"300px\",\"height\":\"400px\"}}",
+  "panel-state-broadcast": "{\"position\":{\"x\":1340,\"y\":380},\"size\":{\"width\":\"1220px\",\"height\":\"840px\"}}",
+  "panel-state-race-control": "{\"position\":{\"x\":1000,\"y\":380},\"size\":{\"width\":\"320px\",\"height\":\"300px\"}}",
+  "panel-state-conditions": "{\"position\":{\"x\":1000,\"y\":1020},\"size\":{\"width\":\"320px\",\"height\":\"240px\"}}",
+  "panel-state-live-onboards-grid": "{\"position\":{\"x\":20,\"y\":0},\"size\":{\"width\":\"2540px\",\"height\":\"360px\"}}",
+  "panel-state-circuit-map": "{\"position\":{\"x\":380,\"y\":540},\"size\":{\"width\":\"400px\",\"height\":\"230px\"}}",
+  "panel-state-live-timing": "{\"position\":{\"x\":20,\"y\":380},\"size\":{\"width\":\"960px\",\"height\":\"840px\"}}",
+  "panel-state-weather-radar": "{\"position\":{\"x\":1000,\"y\":700},\"size\":{\"width\":\"320px\",\"height\":\"300px\"}}",
   "dashboard-visible-panels": "{\"broadcast\":true,\"timing\":true,\"raceControl\":true,\"weather\":true,\"map\":false,\"onboards\":true}"
 }

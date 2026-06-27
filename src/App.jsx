@@ -46,7 +46,7 @@ function App() {
         {visiblePanels.broadcast && (
           <DraggablePanel 
             title="Broadcast" 
-            defaultPosition={{ x: 1335, y: 360 }} 
+            defaultPosition={{ x: 1340, y: 380 }} 
             defaultSize={{ width: 1220, height: 840 }}
             zIndexOffset={1}
           >
@@ -58,8 +58,8 @@ function App() {
         {visiblePanels.timing && (
           <DraggablePanel 
             title="Live Timing" 
-            defaultPosition={{ x: 20, y: 360 }} 
-            defaultSize={{ width: 1000, height: 840 }}
+            defaultPosition={{ x: 20, y: 380 }} 
+            defaultSize={{ width: 960, height: 840 }}
             zIndexOffset={1}
           >
             <LiveTiming />
@@ -70,7 +70,7 @@ function App() {
         {visiblePanels.raceControl && (
           <DraggablePanel 
             title="Race Control" 
-            defaultPosition={{ x: 1020, y: 360 }} 
+            defaultPosition={{ x: 1000, y: 380 }} 
             defaultSize={{ width: 320, height: 300 }}
             zIndexOffset={2}
           >
@@ -82,7 +82,7 @@ function App() {
         {visiblePanels.weather && (
           <DraggablePanel 
             title="Conditions" 
-            defaultPosition={{ x: 1020, y: 960 }} 
+            defaultPosition={{ x: 1000, y: 1020 }} 
             defaultSize={{ width: 320, height: 240 }}
             zIndexOffset={4}
           >
@@ -132,7 +132,7 @@ function App() {
         {visiblePanels.weather && (
           <DraggablePanel 
             title="Weather Radar" 
-            defaultPosition={{ x: 1020, y: 660 }} 
+            defaultPosition={{ x: 1000, y: 700 }} 
             defaultSize={{ width: 320, height: 300 }}
             zIndexOffset={3}
           >
