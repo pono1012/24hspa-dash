@@ -1,8 +1,9 @@
 .dashboard-app {
-  min-height: 100vh;
+  min-height: 133.33vh; /* 100vh / 0.75 (zoom) */
+  min-width: 133.33vw;  /* 100vw / 0.75 (zoom) */
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Prevent body scroll, everything is inside the workspace */
+  overflow: auto; /* allow scroll if items are placed outside bounds */
 }
 
 /* Update background to be full screen and more map-like */
@@ -25,8 +26,8 @@ header.header-container {
   position: relative;
   flex-grow: 1;
   width: 100%;
-  height: calc(100vh - 60px); /* Subtract header height */
-  overflow: hidden; /* The workspace bounds the draggable items */
+  min-height: calc(133.33vh - 60px); /* Subtract header height */
+  overflow: visible; /* Allow overflow if needed */
 }
 
 .widget-wrapper {
