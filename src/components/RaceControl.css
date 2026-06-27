@@ -1,0 +1,76 @@
+.rc-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.rc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-color);
+  animation: pulse 1.5s infinite;
+}
+
+.rc-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.rc-message {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.rc-message.new {
+  animation: slideIn 0.3s ease-out;
+}
+
+.rc-message.warning {
+  border-left-color: #f5a623;
+  background: linear-gradient(90deg, rgba(245, 166, 35, 0.1) 0%, transparent 100%);
+}
+
+.rc-message.info {
+  border-left-color: #4a90e2;
+}
+
+.rc-message.flag {
+  border-left-color: #00ff88;
+  background: linear-gradient(90deg, rgba(0, 255, 136, 0.1) 0%, transparent 100%);
+}
+
+.rc-time {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  min-width: 40px;
+}
+
+.rc-text {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}

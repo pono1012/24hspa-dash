@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/yr/:match*",
+      "destination": "https://www.yr.no/api/v0/:match*"
+    },
+    {
+      "source": "/swisstiming/index.js",
+      "destination": "/api/swisstiming-bypass.js"
+    },
+    {
+      "source": "/swisstiming/:match*",
+      "destination": "https://racing.liveresults.swisstiming.com/:match*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
