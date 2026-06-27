@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './StreamViewer.css';
 
 const STREAMS = [
@@ -6,9 +6,43 @@ const STREAMS = [
   { id: '1bbj47g_FOs', label: 'Main Stream (EN)', type: 'main', lang: 'EN' }
 ];
 
+const extractYoutubeId = (url) => {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[7].length === 11) ? match[7] : url; // fallback to url in case they just pasted the ID
+};
+
 const StreamViewer = () => {
-  const [activeStream, setActiveStream] = useState(STREAMS[0]);
+  const [customStreams, setCustomStreams] = useState(() => {
+    const saved = localStorage.getItem('dashboard-custom-streams');
+    return saved ? JSON.parse(saved) : [];
+  });
+  
+  const allStreams = [...STREAMS, ...customStreams];
+  
+  const [activeStream, setActiveStream] = useState(allStreams[0]);
   const [showSelector, setShowSelector] = useState(false);
+
+  const handleAddCustomStream = () => {
+    const url = window.prompt("Enter YouTube URL for the custom stream:");
+    if (!url) return;
+    
+    const id = extractYoutubeId(url);
+    if (!id) {
+      alert("Invalid YouTube URL. Please try again.");
+      return;
+    }
+    
+    const name = window.prompt("Enter a short name for this stream (e.g. 'Fan Cam'):", "Custom Stream");
+    if (!name) return;
+    
+    const newStream = { id, label: name, type: 'custom', lang: 'CSTM' };
+    const updatedCustoms = [...customStreams, newStream];
+    setCustomStreams(updatedCustoms);
+    localStorage.setItem('dashboard-custom-streams', JSON.stringify(updatedCustoms));
+    setActiveStream(newStream);
+    setShowSelector(false);
+  };
 
   return (
     <div className="stream-container" style={{ animationDelay: '0.1s' }}>
@@ -21,7 +55,7 @@ const StreamViewer = () => {
             </button>
             {showSelector && (
               <div className="stream-dropdown">
-                {STREAMS.map(stream => (
+                {allStreams.map(stream => (
                   <button 
                     key={stream.id} 
                     className={`stream-option ${activeStream.id === stream.id ? 'active' : ''}`}
@@ -30,6 +64,11 @@ const StreamViewer = () => {
                     {stream.label}
                   </button>
                 ))}
+                <div style={{ borderTop: '1px solid #333', margin: '4px 8px 0', paddingTop: '4px' }}>
+                  <button className="stream-option" style={{ color: '#ffcc00', padding: '6px 8px' }} onClick={handleAddCustomStream}>
+                    + Add Custom Link
+                  </button>
+                </div>
               </div>
             )}
           </div>

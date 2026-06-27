@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OnboardsPanel.css';
 
 const AVAILABLE_ONBOARDS = [
@@ -10,8 +10,15 @@ const AVAILABLE_ONBOARDS = [
   { id: '8Hxnx2cKFFk', car: 'TV', team: 'Main Feed', driver: 'German Stream', class: 'PRO' }
 ];
 
-const OnboardSlot = ({ initialSlot }) => {
-  const [selectedOnboard, setSelectedOnboard] = useState(AVAILABLE_ONBOARDS[initialSlot]);
+const extractYoutubeId = (url) => {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[7].length === 11) ? match[7] : url; // fallback to url
+};
+
+const OnboardSlot = ({ initialSlot, allOnboards }) => {
+  const safeInitial = initialSlot % allOnboards.length;
+  const [selectedOnboard, setSelectedOnboard] = useState(allOnboards[safeInitial]);
 
   return (
     <div className="onboard-mini-card">
@@ -33,11 +40,11 @@ const OnboardSlot = ({ initialSlot }) => {
           className="mini-onboard-selector"
           value={selectedOnboard.id}
           onChange={(e) => {
-            const onboard = AVAILABLE_ONBOARDS.find(ob => ob.id === e.target.value);
+            const onboard = allOnboards.find(ob => ob.id === e.target.value);
             if (onboard) setSelectedOnboard(onboard);
           }}
         >
-          {AVAILABLE_ONBOARDS.map(ob => (
+          {allOnboards.map(ob => (
             <option key={ob.id} value={ob.id}>Car {ob.car} - {ob.driver}</option>
           ))}
         </select>
@@ -49,6 +56,35 @@ const OnboardSlot = ({ initialSlot }) => {
 const OnboardsPanel = () => {
   const [slotCount, setSlotCount] = useState(5);
   const slots = Array.from({ length: slotCount }, (_, i) => i);
+
+  const [customOnboards, setCustomOnboards] = useState(() => {
+    const saved = localStorage.getItem('dashboard-custom-onboards');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const allOnboards = [...AVAILABLE_ONBOARDS, ...customOnboards];
+
+  const handleAddCustomOnboard = () => {
+    const url = window.prompt("Enter YouTube URL for the custom onboard camera:");
+    if (!url) return;
+    
+    const id = extractYoutubeId(url);
+    if (!id) {
+      alert("Invalid YouTube URL. Please try again.");
+      return;
+    }
+    
+    const carNum = window.prompt("Enter the Car Number (e.g. '99'):", "00");
+    if (!carNum) return;
+
+    const driverName = window.prompt("Enter the Driver or Team Name:", "Custom Car");
+    if (!driverName) return;
+    
+    const newOnboard = { id, car: carNum, team: 'Custom', driver: driverName, class: 'CSTM' };
+    const updatedCustoms = [...customOnboards, newOnboard];
+    setCustomOnboards(updatedCustoms);
+    localStorage.setItem('dashboard-custom-onboards', JSON.stringify(updatedCustoms));
+  };
 
   return (
     <div className="onboards-container">
@@ -68,10 +104,17 @@ const OnboardsPanel = () => {
           <option value={7}>7 Cameras</option>
           <option value={8}>8 Cameras</option>
         </select>
+        <button 
+          className="settings-select" 
+          style={{ marginLeft: '12px', cursor: 'pointer', background: '#333' }}
+          onClick={handleAddCustomOnboard}
+        >
+          + Add Custom Link
+        </button>
       </div>
       <div className="onboards-grid">
         {slots.map(i => (
-          <OnboardSlot key={i} initialSlot={i % AVAILABLE_ONBOARDS.length} />
+          <OnboardSlot key={i} initialSlot={i} allOnboards={allOnboards} />
         ))}
       </div>
     </div>
