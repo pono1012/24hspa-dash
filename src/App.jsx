@@ -46,8 +46,8 @@ function App() {
         {visiblePanels.broadcast && (
           <DraggablePanel 
             title="Broadcast" 
-            defaultPosition={{ x: 1340, y: 380 }} 
-            defaultSize={{ width: 1220, height: 840 }}
+            defaultPosition={{ x: 979, y: 285 }} 
+            defaultSize={{ width: 1260, height: 840 }}
             zIndexOffset={1}
           >
             <StreamViewer />
@@ -58,8 +58,8 @@ function App() {
         {visiblePanels.timing && (
           <DraggablePanel 
             title="Live Timing" 
-            defaultPosition={{ x: 20, y: 380 }} 
-            defaultSize={{ width: 960, height: 840 }}
+            defaultPosition={{ x: 14, y: 272 }} 
+            defaultSize={{ width: 960, height: 920 }}
             zIndexOffset={1}
           >
             <LiveTiming />
@@ -70,8 +70,8 @@ function App() {
         {visiblePanels.raceControl && (
           <DraggablePanel 
             title="Race Control" 
-            defaultPosition={{ x: 1000, y: 380 }} 
-            defaultSize={{ width: 320, height: 300 }}
+            defaultPosition={{ x: 738, y: 281 }} 
+            defaultSize={{ width: 300, height: 320 }}
             zIndexOffset={2}
           >
             <RaceControl />
@@ -82,7 +82,7 @@ function App() {
         {visiblePanels.weather && (
           <DraggablePanel 
             title="Conditions" 
-            defaultPosition={{ x: 1000, y: 1020 }} 
+            defaultPosition={{ x: 730, y: 738 }} 
             defaultSize={{ width: 320, height: 240 }}
             zIndexOffset={4}
           >
@@ -94,7 +94,7 @@ function App() {
         {visiblePanels.map && (
           <DraggablePanel 
             title="Circuit Map (Beta)" 
-            defaultPosition={{ x: 380, y: 540 }} 
+            defaultPosition={{ x: 860, y: 240 }} 
             defaultSize={{ width: 400, height: 230 }}
             zIndexOffset={5}
           >
@@ -132,8 +132,8 @@ function App() {
         {visiblePanels.weather && (
           <DraggablePanel 
             title="Weather Radar" 
-            defaultPosition={{ x: 1000, y: 700 }} 
-            defaultSize={{ width: 320, height: 300 }}
+            defaultPosition={{ x: 740, y: 521 }} 
+            defaultSize={{ width: 300, height: 280 }}
             zIndexOffset={3}
           >
             <div className="widget-wrapper">
@@ -152,7 +152,7 @@ function App() {
         {visiblePanels.onboards && (
           <DraggablePanel 
             title="Live Onboards Grid" 
-            defaultPosition={{ x: 20, y: 0 }} 
+            defaultPosition={{ x: 19, y: 0 }} 
             defaultSize={{ width: 2540, height: 360 }}
             zIndexOffset={0}
           >
