@@ -40,9 +40,9 @@ To run the dashboard locally:
 
 *Note: The local Vite proxy is configured to automatically rewrite Swiss Timing security checks and bypass Yr.no CORS restrictions.*
 
-## Live Demo (Vercel)
+## Live Demo
 
-The live demo of this dashboard can be deployed for free on Vercel. 
-The repository includes `vercel.json` and a Serverless Function (`api/swisstiming-bypass.js`) to replicate the local proxy environment in production.
+🚀 **[View the Live Demo on Vercel](https://24hspa-dash.vercel.app/)**
 
-Simply link this repository to a new Vercel project to deploy!
+This project is fully configured to run on Vercel. 
+The repository includes `vercel.json` and a Serverless Function (`api/swisstiming-bypass.js`) to perfectly replicate the local development proxy (for Swiss Timing and Yr.no) in a production environment.
